@@ -1,0 +1,40 @@
+footer {
+    padding: 10px calc(50% - 496px);
+    background-color: rgba(243, 237, 200, 0.8);
+    display: flex;
+    justify-content:space-between;
+    align-self: flex-end;
+    gap: 10px;
+    font-size: 15px;
+    height: 50%;
+    border-top: 4mm ridge rgba(239, 243, 161, 0.6);
+    }
+    footer h5 {
+        position: relative;   
+    }
+    footer h4 {
+        margin: 0;
+    }
+    footer p {
+        margin: 0;
+    }
+    footer a {
+        text-decoration: none;
+        color: inherit;
+        line-height: 28px;
+        font-size: small;
+    }
+    footer ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    footer>*{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .soc {
+        display: flex;
+        justify-content: space-between;
+    }

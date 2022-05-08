@@ -1,0 +1,31 @@
+.card {
+    padding: 5px;
+    border-radius: 18px;
+    box-shadow: 2px 2px 10px 0 #0008;
+    display: grid;
+    height: 700px;
+}
+.card__author {
+    color:black;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700 bold;
+    background-color: aqua;
+    height: 20px;
+}
+.author__img {
+    min-width: 30px;
+    max-width: 50px;
+    margin: 0;
+    border-radius: 20px;
+}
+.card__img {
+    height: 400px;
+    width: auto;
+    background-color: lightcoral;
+    box-shadow: 2px 2px 10px 0 #0008;
+}
+.card__price {
+    font-weight: bold;
+    font-size: 1.2em;
+}
