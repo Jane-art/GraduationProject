@@ -1,21 +1,8 @@
 const responseHandler = res => {
-    // console.log(res);
+    //console.log(res);
     return res.ok ? res.json() : res.statusText;
 }
 
-const responseHandlerById = res => {
-    //console.log(res);
-    if (res.ok){
-        let array = [];
-        array = res.json().then(x => { return x});
-        console.log(array);
-        return array;
-
-    } else {
-        return res.statusText;
-    }
-
-}
 
 
 class Api {
@@ -26,20 +13,58 @@ class Api {
 
     getPostList() {
         //return "all ok";
-        return fetch(`${this.path}`, {
+        return fetch(`${this.path}/post`, {
             /*headers: {
-                "authorization": `Bearer ${this.token}`
+                "Access-Control-Allow-Origin": "http://localhost:8080",
+                'Access-Control-Allow-Credentials' : 'true'
             }*/
         }).then(responseHandler);  //путь и набор параметров*/
     }
 
     getPostProduct(id) {
-        return fetch(`${this.path}`, {}).then(responseHandlerById);  //путь и набор параметров
+        //console.log(`${this.path}/data/${id}.json`);
+        return fetch(`${this.path}/post/${id}`, {
+            
+        }).then(responseHandler);  //путь и набор параметров
     }
+
+    getAuthorById(id) {
+        return fetch(`${this.path}/author/${id}`, {
+            
+        }).then(responseHandler);  //путь и набор параметров
+    }
+
+    postAuthor(author) {
+
+    
+        console.log("author : " + JSON.stringify(author));
+
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(author)
+        };
+        fetch(`${this.path}/author`, requestOptions)
+            .then(responseHandler);
+
+
+
+        // Simple POST request with a JSON body using fetch
+        /*const requestOptions = {
+            method: 'POST',
+            //headers: { 'Content-Type': 'application/json' },
+            body: {"x": 4}
+        };
+        fetch(`${this.path}/author`, requestOptions)
+        .then(responseHandler);*/
+    }
+
 }
+//https://raw.githubusercontent.com/Jane-art/myProgect-2022-/master/src/data/1.json
 
 const config = {
-    path: "http://raw.githubusercontent.com/Jane-art/myProgect-2022-/master/src/data.json",
+    path: "http://192.168.31.167:3000",
 
 } // файл для конфигурации с сервером, можно поменять запросы и токен для своего проекта
 const api = new Api(config);

@@ -29,6 +29,9 @@ const Card = (props) => {
             <div className="card__img" style={st}></div>
             <div className="card__price">{props.price}</div>
             <div className="card__text">{props.text}</div>
+
+           
+            <div>{props.rating}</div>
         </div>
     )
 }

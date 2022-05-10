@@ -41,7 +41,10 @@ const Catalog =({searchText}) => {
             {searchText && <div className="search__item">По запросу <strong> {searchText}</strong> найдено {cards.length}</div>}
             <div className="cards-container">
                 {posts.map(el => (<Link to={"/post/" + el.id} key={el.id}>
-                                            <Card text={el.name} key={el.id} pic={el.picture} price={el.price} author={el.author} author__img={el.author__img}/>
+                                            <Card text={el.name} key={el.id} 
+                                            pic={el.picture} price={el.cardText} author={el.author} 
+                                            author__img={el.authorImg} rating={el.rating} 
+                                            commends = {el.commends} />
                                     </Link>))}
             </div>
         </>
