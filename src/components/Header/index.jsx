@@ -7,7 +7,7 @@ import avatar from "../Logo/img/9c23fb3fea95ce560ed99eb44ac99041.jpg";
 import api from "../../Api";
 import Registration from "../../Pages/Registration";
 
-const Header = ({searchText}) => {
+const Header = ({searchText, changeTextLookUp, currentAuthor, setCurrentAuthor}) => {
     let center = {
         verticalAlign: "middle",
         display: "flex",
@@ -57,24 +57,33 @@ const Header = ({searchText}) => {
     const [exitBTN, setStyleExit] = useState(div_login_hidden);
     const [count, setStyleLogin] = useState(div_login_visible);
     const [input_value, setValue] = useState("");
+
+    //сохранаяем автора
     const [post, setPost] = useState({});
 
     const [saveauthor, setAuthor] = useState({});
 
-    
+    // автор по email
     const getData = function() {
-        api.getAuthorById(input_value)
-        .then(data => {
-            
-            setPost(data);
-            console.log("input_value : " + input_value);
-            console.log("post.email : " + data.email);
-            if (data.email===input_value){
-                setStyleLogin(div_login_hidden);
-                setStyleExit(div_login_visible);
-            }
-            //setSendRequest(false);
-        })
+        console.log(input_value)
+        if (input_value==""){
+            alert("Поле email пустое")
+        }else{
+            api.getAuthorById(input_value)
+            .then(data => {
+                
+                setPost(data);
+                // console.log("input_value : " + input_value);
+                // console.log("post.email : " + data.email);
+                if (data.email===input_value){
+                    setStyleLogin(div_login_hidden);
+                    setStyleExit(div_login_visible);
+
+                }
+                setCurrentAuthor(JSON.stringify(data))
+                //setSendRequest(false);
+            })
+        }
         /*.then (x => 
             { 
                 console.log("input_value : " + input_value);
@@ -98,16 +107,12 @@ const Header = ({searchText}) => {
       setIsOpen(!isOpen);
     }  
     const togglePopupAndSaveData = (author) => {
-        //console.log(author);
-        //setAuthor(author)
-        //api.postAuthor(author);
+
       setIsOpen(!isOpen);
     } 
     
-    const nav_style ={
-        //width : "900px",
-    }
     const userExit = function() {
+        setCurrentAuthor(undefined);
         setStyleExit(div_login_hidden);
         setStyleLogin(div_login_visible);
     }
@@ -117,13 +122,12 @@ const Header = ({searchText}) => {
     }
 
         return (
-            
-
             <header>
 
                 {isOpen && <Registration
                     handleClose={togglePopup}
                     handleSave = {togglePopupAndSaveData}
+                    
                 />}
 
                 <div className="header__main">
@@ -147,7 +151,7 @@ const Header = ({searchText}) => {
 
                     <div>     
                       
-                        <Search text={searchText} foo={changeText}/>
+                        <Search text={searchText} foo={changeTextLookUp}/>
                     </div>
                     
                     <div style={center}>

@@ -6,11 +6,23 @@ import Main from "./components/Main";
 
 const App = () => {
     const [searchText, changeText] = useState("");
+
+    const [currentAuthor, setCurrentAuthor] = useState();
    
     return (
         <div className="container">
-            <Header searchText ={searchText} changeText={changeText}/> 
-            <Main search={searchText}/>
+            <Header 
+                searchText ={searchText} 
+                changeTextLookUp={changeText}
+
+                currentAuthor = {currentAuthor}
+                setCurrentAuthor = {setCurrentAuthor}
+            /> 
+            <Main search={searchText}
+
+                currentAuthor = {currentAuthor}
+                setCurrentAuthor = {setCurrentAuthor}
+            />
             <Footer />
         </div> // подключаем страницы
     )

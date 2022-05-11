@@ -16,34 +16,28 @@ const Post = () => {
     }, []);
     
     let image_style ={
-        height: "100%",
-         width: "100%",
+        height: "100px",
+         width: "100px",
         // object: "contain"
     };
-    let image_st ={
-        height: "100%",
-        width: "100%",
-        // object: "contain"
-    };
+    
 
 
     return ( 
-        <div className="postList">
-            {/* <button type="button" className="btn-primary" >
-                        <span>Назад</span>
-            </button> */}
-           <div className="card__img"><img src={post.picture} style = {image_st}/></div>
+            <div>
+                    <img  className="card__img1" src={post.picture}/>
                 <div className="subTitle">
-            
-                    <div className="author__img" ><img src={post.authorImg} style = {image_style}/></div>
-                    <div>{post.author}</div>
-                    <h1>{post.name || "Post"}</h1>
-                    <div>{post.cardText}</div>
-                    <div>
-                        {post.commends?.map(el => (el.map( x => <div> <p> {x.author} </p><p> {x.data} </p><p> {x.commend} </p>  </div> ) ))}           
-                    </div>
-                </div>
-        </div>
+                        
+                        <div className="author__img1" ><img src={post.authorImg} style = {image_style}/></div>
+                        <div className="author__post1">{post.author}</div>
+                        <div className="author__post2">{post.name || "Post"}</div>
+                        <div  className="author__post2">{post.cardText}</div>
+                        </div>
+                        <div className="coment">
+                            {post.commends?.map(el => (el.map( x => <div> <p> {x.author} </p><p> {x.data} </p><p> {x.commend} </p>  </div> ) ))}           
+                        </div>
+                
+             </div>      
     )
 }
 

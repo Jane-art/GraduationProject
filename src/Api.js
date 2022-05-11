@@ -34,6 +34,17 @@ class Api {
         }).then(responseHandler);  //путь и набор параметров
     }
 
+    postPost(post){
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(post)
+        };
+        fetch(`${this.path}/post`, requestOptions)
+            .then(responseHandler);
+    }
+
+
     postAuthor(author) {
 
     
@@ -64,6 +75,7 @@ class Api {
 //https://raw.githubusercontent.com/Jane-art/myProgect-2022-/master/src/data/1.json
 
 const config = {
+    //path: "http:voland8.spnet.ru:3000"
     path: "http://192.168.31.167:3000",
 
 } // файл для конфигурации с сервером, можно поменять запросы и токен для своего проекта

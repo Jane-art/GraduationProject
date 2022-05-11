@@ -9,18 +9,21 @@ import fon from "../Logo/img/images.jpg"
 import jojo from "../Logo/img/1.png"
 import CreatePost from "../../Pages/CreatePost";
 
-const Main = ({search}) => {
+const Main = ({search, currentAuthor}) => {
 
     const [isOpen, setIsOpen] = useState(false);
  
     const togglePopup = () => {
-        //console.log("dfsdf");
-      setIsOpen(!isOpen);
+        if (currentAuthor == undefined){
+            alert("Автор не известен, войдите в систему")
+        }else{
+            setIsOpen(!isOpen);
+        }
+
+      
     }  
     const togglePopupAndSaveData = (author) => {
-        //console.log(author);
-        //setAuthor(author)
-        //api.postAuthor(author);
+        
       setIsOpen(!isOpen);
     } 
     
@@ -36,6 +39,7 @@ const Main = ({search}) => {
     return (
         <main style={styles}>
             {isOpen && <CreatePost
+                    currentAuthor = {currentAuthor}
                     handleClose={togglePopup}
                     handleSave = {togglePopupAndSaveData}
                 />}
