@@ -99,8 +99,8 @@ const Catalog =({searchText}) => {
                 }).map(el => (<Link to={"/post/" + el.id} key={el.id}>
                                             <Card text={el.name} key={el.id} 
                                             pic={el.picture} price={el.cardText} author={el.author} 
-                                            author__img={el.authorImg} rating={el.rating} 
-                                            commends = {el.commends} />
+                                            author__img={el.authorImg} /*rating={el.rating}*/ 
+                                            /*commends = {el.commends}*/ />
                                     </Link>))}
 
 

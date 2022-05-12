@@ -24,7 +24,7 @@ const Post = () => {
 
 
     return ( 
-            <div>
+            <div className ="postList">
                     <img  className="card__img1" src={post.picture}/>
                 <div className="subTitle">
                         
@@ -32,7 +32,7 @@ const Post = () => {
                         <div className="author__post1">{post.author}</div>
                         <div className="author__post2">{post.name || "Post"}</div>
                         <div  className="author__post2">{post.cardText}</div>
-                        </div>
+                </div>
                         <div className="coment">
                             {post.commends?.map(el => (el.map( x => <div> <p> {x.author} </p><p> {x.data} </p><p> {x.commend} </p>  </div> ) ))}           
                         </div>
