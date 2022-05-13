@@ -5,7 +5,7 @@ import Home from "../../Pages/Home";
 import Catalog from "../../Pages/Catalog";
 import Registration from "../../Pages/Registration";
 import Post from "../../Pages/Post";
-import fon from "../Logo/img/jojo1.jpg"
+import fon from "../Logo/img/images.jpg"
 import jojo from "../Logo/img/1.png"
 import CreatePost from "../../Pages/CreatePost";
 

@@ -20,6 +20,11 @@ class Api {
             }*/
         }).then(responseHandler);  //путь и набор параметров*/
     }
+    
+    deletePost(id)
+    {
+        console.log("dfsdfs")
+    }
 
     getPostProduct(id) {
         //console.log(`${this.path}/data/${id}.json`);
