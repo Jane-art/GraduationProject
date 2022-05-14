@@ -23,7 +23,12 @@ class Api {
     
     deletePost(id)
     {
-        console.log("dfsdfs")
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+        };
+        fetch(`${this.path}/post/${id}`, requestOptions)
+            .then(responseHandler);
     }
 
     getPostProduct(id) {
@@ -38,6 +43,27 @@ class Api {
             
         }).then(responseHandler);  //путь и набор параметров
     }
+
+    putPost(post){
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(post)
+        };
+        fetch(`${this.path}/post/${post.id}`, requestOptions)
+            .then(responseHandler);
+    }
+    /*
+    putPost(post){
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(post)
+        };
+        fetch(`${this.path}/post`, requestOptions)
+            .then(responseHandler);
+        }
+    }*/
 
     postPost(post){
         const requestOptions = {

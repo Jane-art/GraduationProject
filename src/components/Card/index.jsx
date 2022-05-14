@@ -12,7 +12,7 @@ const Card = (props) => {
         backgroundSize: "contain",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundColor: "#fff"
+        backgroundColor: "#ffffff"
     };
 
     let st__author__img ={
@@ -27,8 +27,9 @@ const Card = (props) => {
             <div className="author__img" style={st__author__img}></div>
             <div className="card__author">{props.author}</div>
             <div className="card__img" style={st}></div>
-            <div className="card__price">{props.price}</div>
             <div className="card__text">{props.text}</div>
+            <div className="card__price">{props.price}</div>
+            
 
            
             <div>{props.rating}</div>

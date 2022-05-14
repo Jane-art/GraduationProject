@@ -4,9 +4,12 @@ footer {
     display: flex;
     justify-content:space-between;
     align-self: flex-end;
+    left: 0px;
+    bottom: 0px;
+    height: 200px;
+    width: 100%;
     gap: 10px;
     font-size: 15px;
-    height: 50%;
     border-top: 4mm ridge rgba(239, 243, 161, 0.6);
     }
     footer h5 {
@@ -23,6 +26,11 @@ footer {
         color: inherit;
         line-height: 28px;
         font-size: small;
+    }
+    .blank {
+        font-size: 30px;
+        color: blueviolet;
+
     }
     footer ul {
         padding: 0;

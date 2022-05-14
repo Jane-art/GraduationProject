@@ -127,7 +127,6 @@ const Header = ({searchText, changeTextLookUp, currentAuthor, setCurrentAuthor})
                 {isOpen && <Registration
                     handleClose={togglePopup}
                     handleSave = {togglePopupAndSaveData}
-                    
                 />}
 
                 <div className="header__main">
@@ -158,7 +157,7 @@ const Header = ({searchText, changeTextLookUp, currentAuthor, setCurrentAuthor})
                         <div style = {count}>
                             <div>
                                 
-                                <input placeholder="email" className="ant-input mb-2" type="text" onInput={changeText} name="name" />
+                                <input placeholder="email" type="text" onInput={changeText} name="name" />
                             </div>
                             <div>                              
                                 <button type="button" className="btn-default" onClick={getData} >Войти</button>                            

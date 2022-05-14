@@ -8,6 +8,7 @@ import Post from "../../Pages/Post";
 import fon from "../Logo/img/images.jpg"
 import jojo from "../Logo/img/1.png"
 import CreatePost from "../../Pages/CreatePost";
+import fon1 from "../Logo/img/images.jpg"
 
 const Main = ({search, currentAuthor}) => {
 
@@ -18,10 +19,9 @@ const Main = ({search, currentAuthor}) => {
             alert("Автор не известен, войдите в систему")
         }else{
             setIsOpen(!isOpen);
-        }
-
-      
+        }      
     }  
+    
     const togglePopupAndSaveData = (author) => {
         
       setIsOpen(!isOpen);
@@ -29,8 +29,8 @@ const Main = ({search, currentAuthor}) => {
     
 
     const styles = {
-        backgroundImage: `url(${fon})`,
-        backgroundPosition: '100% 100%',
+        backgroundImage: `url(${fon1})`,
+        backgroundPosition: '60% 100%',
       }
       const stl = {
         backgroundColor: "#fff",
@@ -56,7 +56,7 @@ const Main = ({search, currentAuthor}) => {
                 <Route path="/catalog" element={<Home/>}/> 
                 <Route path="/" element={<Catalog searchText={search}/>}/>
                 <Route path="/registration" element={<Registration/>}/>
-                <Route path="/post/:id" element ={<Post/>}/>
+                <Route path="/post/:id" element ={<Post currentAuthor = {currentAuthor} />}/>
             </Routes>
             </div>
 

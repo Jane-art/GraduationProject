@@ -18,6 +18,7 @@ const App = () => {
                 currentAuthor = {currentAuthor}
                 setCurrentAuthor = {setCurrentAuthor}
             /> 
+            
             <Main search={searchText}
 
                 currentAuthor = {currentAuthor}

@@ -33,6 +33,8 @@ class Author{
 const CreatePost = (props)  => {
 
     // const [post, setPost] = useState({}); //создаем переменные и функции их изменения
+    const [knownPost,knowPost] = useState();
+    
     const [val,updateVal] = useState();
 
     const [postName,updateName] = useState();
@@ -62,22 +64,53 @@ const CreatePost = (props)  => {
         let sendAuthor = JSON.parse(props.currentAuthor);
         console.log(sendAuthor);
         
-        let sendCard = new Card(
-            Math.floor(Math.random() * 10000000) + 1 ,
-            sendAuthor.authorImg,
-            sendAuthor.name,
-            postName,
-            postText,
-            0,
-            val,
-            ["new","site-generated"],
-            []
-        )
+        
 
-        api.postPost(sendCard);
+        if (knownPost){
+            let sendCard = new Card(
+                props.currentPost.id,
+                sendAuthor.authorImg,
+                sendAuthor.name,
+                postName,
+                postText,
+                0,
+                val,
+                ["new","site-generated"],
+                []
+            )
+            api.putPost(sendCard);
+        }else{
+            let sendCard = new Card(
+                Math.floor(Math.random() * 10000000) + 1 ,
+                sendAuthor.authorImg,
+                sendAuthor.name,
+                postName,
+                postText,
+                0,
+                val,
+                ["new","site-generated"],
+                []
+            )
+            api.postPost(sendCard);
+        }
         //console.log(sendCard);
         props.handleSave();
     }
+
+    useEffect(() => {
+        //api.getPostProduct();
+        
+        //knowPost(!(props.currentPost == undefined));
+        if (props.currentPost == undefined){
+            knowPost(false)
+        }else{
+            knowPost(true)
+            console.log(props.currentPost.name);
+            updateVal(props.currentPost.picture);
+            updateName(props.currentPost.name);
+            updateText(props.currentPost.cardText);
+        }
+    }, []);
 
 
     const styles = {
@@ -88,18 +121,33 @@ const CreatePost = (props)  => {
     return (
         <div className='popup' >
             <div className='popup_inner_createPost' style={styles}>
-                <div className="modalPost">
+                
+                {knownPost && <div className="modalPost">
+                    <div className="picturePost" >
+                        <img className="picturePost1" src={val} alt = {"avatar"}/>
+                    </div>
+                    <div className="dataInputCreate">
+                        <label><input className="inputReg" placeholder="url post picture" type="text" name="avatar" value={val} onInput={changeText} /*value="image\9c23fb3fea95ce560ed99eb44ac99041.jpg"*//></label>
+                        <label>Название<input className="inputReg" placeholder="Название" type="text" name="name" value={postName} onInput={changeTextName}/></label>
+                        <label>Текст<textarea resize="vertical" maxLength="40"  className="inputReg" placeholder="text" type="text" name="text" value={postText}  onInput={changeTextPost}/></label>
+                        <button className="btn-registration" onClick={props.handleClose}>Отмена</button>
+                        <button className="btn-registration" onClick={handleSave}>Создать</button>
+                    </div>
+                </div>}
+                
+                
+                {!knownPost && <div className="modalPost">
                     <div className="picturePost" >
                         <img className="picturePost1" src={val} alt = {"avatar"}/>
                     </div>
                     <div className="dataInputCreate">
                         <label><input className="inputReg" placeholder="url post picture" type="text" name="avatar" onInput={changeText} /*value="image\9c23fb3fea95ce560ed99eb44ac99041.jpg"*//></label>
                         <label>Название<input className="inputReg" placeholder="Название" type="text" name="name"  onInput={changeTextName}/></label>
-                        <label>Текст<input className="inputReg" placeholder="text" type="text" name="text"  onInput={changeTextPost}/></label>
+                        <label>Текст<textarea resize="vertical" maxLength="40"  className="inputReg" placeholder="text" type="text" name="text"  onInput={changeTextPost}/></label>
                         <button className="btn-registration" onClick={props.handleClose}>Отмена</button>
                         <button className="btn-registration" onClick={handleSave}>Создать</button>
                     </div>
-                </div>
+                </div>}
                 
             </div>
         </div>

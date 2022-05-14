@@ -21,7 +21,7 @@ const Footer =() => {
                 </div>
                 <div>
                    <h4>Контакты</h4>
-                   <a target ="_blank" href="https://vk.com/z.egorova">Я в VK</a>
+                   <a className="blank"  target ="_blank" href="https://vk.com/z.egorova">Я в VK</a>
                    <br/>
                 </div>
         </footer>
